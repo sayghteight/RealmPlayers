@@ -87,6 +87,16 @@ namespace VF_WoWLauncher
         public bool Wait5SecondsAfterUpload = true;
         [ProtoMember(25)]
         public List<string> RemovedRealmLists = new List<string>();
+        [ProtoMember(26)]
+        public string _WowTLKDirectory = "";
+        [ProtoMember(27)]
+        public string _WowCATADirectory = "";
+        [ProtoMember(28)]
+        public string _WowMOPDirectory = "";
+        [ProtoMember(29)]
+        public string _WowWODDirectory = "";
+        [ProtoMember(30)]
+        public string _WowLEGIONDirectory = ""; 
 
         public void AddLaunchShortcut(string _Profile, string _Realm)
         {
@@ -137,6 +147,41 @@ namespace VF_WoWLauncher
             get
             {
                 return Instance._WowTBCDirectory != "";
+            }
+        }
+        public static bool HaveTLK 
+        {
+            get
+            {
+                return Instance._WowTLKDirectory != "";
+            }
+        }
+        public static bool HaveCATA
+        {
+            get
+            {
+                return Instance._WowCATADirectory != "";
+            }
+        } 
+        public static bool HaveMOP
+        {
+            get
+            {
+                return Instance._WowMOPDirectory != "";
+            }
+        }
+        public static bool HaveWOD
+        {
+            get
+            {
+                return Instance._WowWODDirectory != "";
+            }
+        }
+        public static bool HaveLEGION // IMPLEMENTED
+        {
+            get
+            {
+                return Instance._WowLEGIONDirectory != "";
             }
         }
         public static bool DebugMode
@@ -194,6 +239,7 @@ namespace VF_WoWLauncher
                 {"RetroWoW", new RealmInfo{RealmList = "logon.retro-wow.com", RealmName = "RetroWoW 1.12.1", WowVersion = WowVersionEnum.Vanilla}},
                 {"MagicWoW", new RealmInfo{RealmList = "magicwow.co.uk", RealmName = "MagicWoW", WowVersion = WowVersionEnum.Vanilla}},
                 {"SiegeWoW", new RealmInfo{RealmList = "logon.siegewow.com", RealmName = "SiegeWoW", WowVersion = WowVersionEnum.Vanilla}},
+                {"BlackRock", new RealmInfo{RealmList = "blackrock.firestorm-servers.com", RealmName = "Blackrock", WowVersion = WowVersionEnum.Vanilla}},
             };
         }
         public static void Initialize()

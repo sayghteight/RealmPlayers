@@ -9,6 +9,12 @@ namespace VF_WoWLauncher
     {
         Vanilla = 1,
         TBC = 2,
+        TLK = 3,
+        /* Implemented support versions */
+        CATA = 4,
+        MOP = 5,
+        WOD = 6,
+        LEGION = 7,
     }
     class WowUtility
     {
@@ -104,6 +110,40 @@ namespace VF_WoWLauncher
             return fileVersionInfo.FileVersion == "2, 4, 3, 8606" 
                 || (fileVersionInfo.FileMajorPart == 2 && fileVersionInfo.FileMinorPart == 4 && fileVersionInfo.FileBuildPart == 3);
         }
+        /*
+         * UPDATE NEW EXPANSIONS
+         */
+        public static bool IsWowDirectoryTLK(string _Directory)
+        {
+            var fileVersionInfo = System.Diagnostics.FileVersionInfo.GetVersionInfo(_Directory + "\\WoW.exe");
+            return fileVersionInfo.FileVersion == "3, 3, 5, 12340"
+                || (fileVersionInfo.FileMajorPart == 3 && fileVersionInfo.FileMinorPart == 3 && fileVersionInfo.FileBuildPart == 5);
+        }
+        public static bool IsWowDirectoryCATA(string _Directory)
+        {
+            var fileVersionInfo = System.Diagnostics.FileVersionInfo.GetVersionInfo(_Directory + "\\WoW.exe");
+            return fileVersionInfo.FileVersion == "4, 3, 4, 15595"
+                || (fileVersionInfo.FileMajorPart == 4 && fileVersionInfo.FileMinorPart == 3 && fileVersionInfo.FileBuildPart == 4);
+        }
+        public static bool IsWowDirectoryMOP(string _Directory)
+        {
+            var fileVersionInfo = System.Diagnostics.FileVersionInfo.GetVersionInfo(_Directory + "\\WoW.exe");
+            return fileVersionInfo.FileVersion == "5, 4, 8, 18291"
+                || (fileVersionInfo.FileMajorPart == 5 && fileVersionInfo.FileMinorPart == 4 && fileVersionInfo.FileBuildPart == 8);
+        }
+        public static bool IsWowDirectoryWOD(string _Directory)
+        {
+            var fileVersionInfo = System.Diagnostics.FileVersionInfo.GetVersionInfo(_Directory + "\\WoW.exe");
+            return fileVersionInfo.FileVersion == "6, 2, 4, 21742" /* BUILD HOTFIX6 */
+                || (fileVersionInfo.FileMajorPart == 6 && fileVersionInfo.FileMinorPart == 2 && fileVersionInfo.FileBuildPart == 4);
+        }
+        public static bool IsWowDirectoryLEGION(string _Directory)
+        {
+            var fileVersionInfo = System.Diagnostics.FileVersionInfo.GetVersionInfo(_Directory + "\\WoW.exe");
+            return fileVersionInfo.FileVersion == "7, 2, 0, 23937" /* BUILD 7.2.0 TUMB OF SARGERAS */
+                || (fileVersionInfo.FileMajorPart == 7 && fileVersionInfo.FileMinorPart == 2 && fileVersionInfo.FileBuildPart == 0);
+        }
+
         public static short[] GetFileStatus(string _LuaFile, Dictionary<string, DateTime> _BufferedFileStatuses = null)
         {
             if (_BufferedFileStatuses == null)
